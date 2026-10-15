@@ -3,8 +3,9 @@
 from __future__ import annotations
 
 import random
+from collections.abc import Callable
 from dataclasses import dataclass, field
-from typing import Callable, Literal
+from typing import Literal
 
 Jitter = Literal["full", "equal", "none"]
 

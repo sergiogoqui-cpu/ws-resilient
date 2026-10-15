@@ -1,6 +1,6 @@
 import pytest
 
-from ws_resilient import Backoff, SequenceTracker, SeqStatus
+from ws_resilient import Backoff, SeqStatus, SequenceTracker
 
 
 def test_backoff_none_is_exponential_and_capped():

@@ -7,7 +7,7 @@ import logging
 from collections.abc import AsyncIterator, Awaitable, Callable, Sequence
 from contextlib import AbstractAsyncContextManager
 from dataclasses import dataclass
-from typing import Protocol
+from typing import Any, Protocol
 
 from .backoff import Backoff
 
@@ -41,11 +41,11 @@ class Stats:
     last_error: str | None = None
 
 
-def _default_connector(url: str, **kwargs: object) -> Connector:
+def _default_connector(url: str, **kwargs: Any) -> Connector:
     import websockets  # imported lazily so tests and custom connectors don't need it
 
     def connect() -> AbstractAsyncContextManager[Connection]:
-        return websockets.connect(url, **kwargs)  # type: ignore[return-value]
+        return websockets.connect(url, **kwargs)
 
     return connect
 
@@ -78,7 +78,7 @@ class ResilientWebSocket:
         on_connect: Callable[[], None] | None = None,
         on_disconnect: Callable[[BaseException | None], None] | None = None,
         sleep: Callable[[float], Awaitable[None]] | None = None,
-        connect_kwargs: dict[str, object] | None = None,
+        connect_kwargs: dict[str, Any] | None = None,
     ) -> None:
         if connect is None and not url:
             raise ValueError("pass a url or a custom connect factory")
@@ -112,8 +112,8 @@ class ResilientWebSocket:
             error: BaseException | None = None
             try:
                 async with self._connect() as conn:
-                    for message in self._subscribe:
-                        await conn.send(message)
+                    for sub in self._subscribe:
+                        await conn.send(sub)
                     self.stats.connects += 1
                     self.stats.connected = True
                     if self._on_connect:

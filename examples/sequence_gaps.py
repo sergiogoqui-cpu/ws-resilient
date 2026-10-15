@@ -7,7 +7,7 @@ import asyncio
 
 import websockets
 
-from ws_resilient import Backoff, ResilientWebSocket, SequenceTracker, SeqStatus
+from ws_resilient import Backoff, ResilientWebSocket, SeqStatus, SequenceTracker
 
 
 async def flaky_server(port: int) -> None:

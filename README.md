@@ -1,5 +1,6 @@
 # ws-resilient
 
+[![CI](https://github.com/sergiogoqui-cpu/ws-resilient/actions/workflows/ci.yml/badge.svg)](https://github.com/sergiogoqui-cpu/ws-resilient/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/python-3.10%2B-3776AB?logo=python&logoColor=white)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Typed](https://img.shields.io/badge/typing-strict-blue)
