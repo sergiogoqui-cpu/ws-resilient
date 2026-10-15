@@ -1,4 +1,4 @@
-﻿# ws-resilient
+# ws-resilient
 
 ![Python](https://img.shields.io/badge/python-3.10%2B-3776AB?logo=python&logoColor=white)
 ![License](https://img.shields.io/badge/license-MIT-green)
